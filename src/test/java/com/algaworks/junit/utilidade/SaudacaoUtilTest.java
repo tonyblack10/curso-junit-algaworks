@@ -15,6 +15,13 @@ class SaudacaoUtilTest {
     }
 
     @Test
+    public void saudarComBomDiaAPartir5h() {
+        int horaValida = 5;
+        String saudacao = saudar(horaValida);
+        assertEquals("Bom dia", saudacao);
+    }
+
+    @Test
     public void saudarComBoaTarde() {
         int horaValida = 15;
         String saudacao = saudar(horaValida);
@@ -29,15 +36,21 @@ class SaudacaoUtilTest {
     }
 
     @Test
-    public void deveLancarException() {
-        IllegalArgumentException illegalArgumentException =
-                assertThrows(IllegalArgumentException.class, () -> saudar(-10));
+    public void saudarComBoaNoiteAs4h() {
+        int horaValida = 4;
+        String saudacao = saudar(horaValida);
+        assertEquals("Boa noite", saudacao);
+    }
 
+    @Test
+    public void deveLancarException() {
+        IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class,
+                () -> saudar(-10));
         assertEquals("Hora inválida", illegalArgumentException.getMessage());
     }
 
     @Test
     public void naoDeveLancarException() {
-        assertDoesNotThrow(() -> saudar(0));
+        assertDoesNotThrow(()-> saudar(0));
     }
 }
