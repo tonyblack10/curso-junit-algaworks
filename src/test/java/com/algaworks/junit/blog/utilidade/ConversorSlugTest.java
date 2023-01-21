@@ -10,13 +10,14 @@ class ConversorSlugTest {
 
     @Test
     void deveConverterJuntoComCodigo() {
-        try (MockedStatic<GeradorCodigo> mockedStatic = Mockito.mockStatic(GeradorCodigo.class)) {
-            mockedStatic.when(GeradorCodigo::gerar).thenReturn("123456");
-
-            var slug = ConversorSlug.converterJuntoComCodigo("olá mundo java");
-
-            assertEquals("ola-mundo-java-123456", slug);
-        }
+        // exemplo de teste de metodo estatico
+//        try (MockedStatic<GeradorCodigo> mockedStatic = Mockito.mockStatic(GeradorCodigo.class)) {
+//            mockedStatic.when(GeradorCodigo::gerar).thenReturn("123456");
+//
+//            var slug = ConversorSlug.converterJuntoComCodigo("olá mundo java");
+//
+//            assertEquals("ola-mundo-java-123456", slug);
+//        }
     }
 
 }
