@@ -1,6 +1,8 @@
 package com.algaworks.junit.utilidade;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.DisplayNameGeneration;
+import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
@@ -9,7 +11,8 @@ import java.util.Locale;
 import static com.algaworks.junit.utilidade.SaudacaoUtil.saudar;
 import static org.junit.jupiter.api.Assertions.*;
 
-@DisplayName("Testes no utilitário de saudação")
+//@DisplayName("Testes no utilitário de saudação")
+@DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class SaudacaoUtilTest {
 
     @Test
@@ -55,7 +58,7 @@ class SaudacaoUtilTest {
     }
 
     @Test
-    public void deveLancarException() {
+    public void Dado_uma_hora_invalida_Quando_saudar_Entao_deve_lancar_exception() {
         int horaInvalida = -10;
         Executable chamadaInvalidaDeMetodo = () -> saudar(horaInvalida);
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class, chamadaInvalidaDeMetodo);
