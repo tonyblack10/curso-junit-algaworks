@@ -9,6 +9,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static com.algaworks.junit.utilidade.SaudacaoUtil.saudar;
+import static com.algaworks.junit.utilidade.SaudacaoUtilConditions.igualBomDia;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
@@ -25,10 +26,7 @@ class SaudacaoUtilTest {
         String saudacao = saudar(horaValida);
         String saudacaoCorreta = "Bom dia";
 
-        assertThat(saudacao)
-                .as("Validando se a saudação é %s", saudacaoCorreta)
-                .withFailMessage("Erro: Saudação incorreta! Resultado: %s", saudacao)
-                .isEqualTo("Bom dia");
+        assertThat(saudacao).is(igualBomDia());
     }
 
     @Test
