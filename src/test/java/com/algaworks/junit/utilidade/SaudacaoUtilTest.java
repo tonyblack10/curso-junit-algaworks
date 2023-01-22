@@ -1,6 +1,5 @@
 package com.algaworks.junit.utilidade;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
@@ -12,7 +11,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static com.algaworks.junit.utilidade.SaudacaoUtil.saudar;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 //@DisplayName("Testes no utilitário de saudação")
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
@@ -23,8 +23,11 @@ class SaudacaoUtilTest {
     public void saudarComBomDia() {
         int horaValida = 9;
         String saudacao = saudar(horaValida);
+        String saudacaoCorreta = "Bom dia";
 
         assertThat(saudacao)
+                .as("Validando se a saudação é %s", saudacaoCorreta)
+                .withFailMessage("Erro: Saudação incorreta! Resultado: %s", saudacao)
                 .isEqualTo("Bom dia");
     }
 
