@@ -1,5 +1,6 @@
 package com.algaworks.junit.utilidade;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
@@ -8,9 +9,8 @@ import org.junit.jupiter.api.function.Executable;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.Locale;
-
 import static com.algaworks.junit.utilidade.SaudacaoUtil.saudar;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 //@DisplayName("Testes no utilitário de saudação")
@@ -21,10 +21,10 @@ class SaudacaoUtilTest {
     @DisplayName("Deve saudar com bom dia")
     public void saudarComBomDia() {
         int horaValida = 9;
-
         String saudacao = saudar(horaValida);
 
-        assertEquals("Bom dia", saudacao);
+        assertThat(saudacao)
+                .isEqualTo("Bom dia");
     }
 
     @Test
